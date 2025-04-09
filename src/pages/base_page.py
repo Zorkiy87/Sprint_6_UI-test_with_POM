@@ -3,9 +3,6 @@ import allure
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.remote.webdriver import WebDriver
-from src.locators.base_page_locators import BasePageLocators
-
-
 
 class BasePage:
 
@@ -35,10 +32,6 @@ class BasePage:
     def wait_for_element_visible(self, locator, timeout=10):
         with allure.step(f"Ожидание видимости элемента {locator}"):
             return WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located(locator))
-
-    @allure.step('Нажатие на кнопку Принять Куки')
-    def click_cookie(self):
-        self.click_element(BasePageLocators.ACCEPT_COOKIE)
 
     @allure.step('Запрашиваем URL текущей страницы')
     def get_current_url(self):

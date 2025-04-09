@@ -1,14 +1,20 @@
 import allure
 
+from src.locators.base_page_locators import BasePageLocators
 from src.pages.base_page import BasePage
 from src.locators.order_page_locators import OrderPageLocators
 
 class OrderPage(BasePage):
 
+    @allure.step('Нажатие на кнопку Принять Куки')
+    def click_cookie(self):
+        self.click_element(BasePageLocators.ACCEPT_COOKIE)
+
     @allure.step('Ввод имени')
     def set_input_name(self, name):
         input_name = self.find_element(OrderPageLocators.FIELD_INPUT_NAME)
         input_name.send_keys(name)
+
 
     @allure.step('Ввод фамилии')
     def set_input_surname(self, surname):

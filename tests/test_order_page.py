@@ -2,7 +2,6 @@ import allure
 import pytest
 
 from src.pages.order_page import OrderPage
-from conftest import driver
 from data import FirstSetOrderData
 
 

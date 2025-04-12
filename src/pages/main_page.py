@@ -81,5 +81,14 @@ class MainPage(BasePage):
         answer = Answers.I_LIVE_ACROSS_THE_MKAD_ANSWER
         return locator, question, answer
 
+    @allure.step('Проверка ответов на основные вопросы на главной странице')
+    def verify_question_answer(self, question_locator, answer_locator, expected_answer):
+        self.click_cookie()
+        self.scroll_to_element(question_locator)
+        self.click_element(question_locator)
+        self.wait_for_element_visible(answer_locator)
+        actual_answer = self.get_description(answer_locator)
+        assert actual_answer == expected_answer, f"Ожидался ответ: '{expected_answer}', но получен '{actual_answer}'"
+
 
 
